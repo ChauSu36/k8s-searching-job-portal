@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jobportal-frontend-deployment
+  labels:
+    app: jobportal-frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: jobportal-frontend
+  template:
+    metadata:
+      labels:
+        app: jobportal-frontend
+    spec:
+      containers:
+      - name: jobportal-frontend
+        image: chausu/jobportal-frontend:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
