@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jobportal-backend-deployment
+  namespace: jobportal
+  labels:
+    app: jobportal-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jobportal-backend
+  template:
+    metadata:
+      labels:
+        app: jobportal-backend
+    spec:
+      containers:
+      - name: jobportal-backend
+        image: chausu/jobportal-backend:d44525a3f44c9c01c94834a339962f09ece5e695
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
+        env:
+        - name: SPRING_DATASOURCE_URL
+          value: "jdbc:mysql://192.168.233.115:3306/jobportal?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true"
+        - name: SPRING_DATASOURCE_USERNAME
+          value: "jobportal_user"
+        - name: SPRING_DATASOURCE_PASSWORD
+          value: "MatKhau123@"
