@@ -16,7 +16,11 @@ spec:
     spec:
       containers:
       - name: jobportal-frontend
-        image: chausu/jobportal-frontend:latest
-        imagePullPolicy: IfNotPresent
+        image: chausu/jobportal-frontend:d44525a3f44c9c01c94834a339962f09ece5e695
+        imagePullPolicy: Always
         ports:
         - containerPort: 80
+        lifecycle:
+          postStart:
+            exec:
+              command: ["/bin/sh", "-c", "chmod -R 755 /usr/share/nginx/html/assets"]

@@ -28,3 +28,7 @@ spec:
           value: "jobportal_user"
         - name: SPRING_DATASOURCE_PASSWORD
           value: "MatKhau123@"
+        - name: APP_CORS_ALLOWEDORIGINS
+          value: "https://k8s-onpremise.chausu.name.vn,http://localhost:3000"
+        - name: CORS_ALLOWED_ORIGINS
+          value: "https://k8s-onpremise.chausu.name.vn,http://localhost:3000"
