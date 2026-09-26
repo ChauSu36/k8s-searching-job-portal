@@ -21,14 +21,8 @@ spec:
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8080
-        env:
-        - name: SPRING_DATASOURCE_URL
-          value: "jdbc:mysql://192.168.233.115:3306/jobportal?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true"
-        - name: SPRING_DATASOURCE_USERNAME
-          value: "jobportal_user"
-        - name: SPRING_DATASOURCE_PASSWORD
-          value: "MatKhau123@"
-        - name: APP_CORS_ALLOWEDORIGINS
-          value: "https://k8s-onpremise.chausu.name.vn,http://localhost:3000"
-        - name: CORS_ALLOWED_ORIGINS
-          value: "https://k8s-onpremise.chausu.name.vn,http://localhost:3000"
+        envFrom:
+        - configMapRef:
+            name: jobportal-backend-config
+        - secretRef:
+            name: jobportal-backend-secret
