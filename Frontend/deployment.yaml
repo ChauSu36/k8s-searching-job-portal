@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: jobportal-frontend
-        image: chausu/jobportal-frontend:d44525a3f44c9c01c94834a339962f09ece5e695
+        image: chausu/jobportal-frontend:2f04f262542aead7fd4d3124421fdf092b7ab662
         imagePullPolicy: Always
         ports:
         - containerPort: 80
