@@ -1,0 +1,26 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: database
+  name: database-dev-role
+rules:
+  - apiGroups: [""]
+    resources: ["pods", "pods/log", "services", "persistentvolumeclaims"]
+    verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+  - apiGroups: ["apps"]
+    resources: ["statefulsets", "deployments"]
+    verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  namespace: database
+  name: database-dev-binding
+subjects:
+  - kind: User
+    name: developer-database
+    apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: database-dev-role
+  apiGroup: rbac.authorization.k8s.io
